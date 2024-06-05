@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking PDF</title>
+</head>
+<body>
+    <h1>Booking Details</h1>
+    <p>Movie: {{ booking.movie }}</p>
+    <p>User: {{ booking.user }}</p>
+    <p>Booking ID: {{ booking.id }}</p>
+    <p>Booking Date: {{ booking.booking_date }}</p>
+    <p>Tickets: {{ booking.tickets }}</p>
+    <p>Razorpay Order ID: {{ booking.razorpay_order_id }}</p>
+    <img style="width: auto;height:auto ;" src="{{ booking.qr_image.url }}" alt="QR Code">
+</body>
+</html>
