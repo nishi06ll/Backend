@@ -77,38 +77,17 @@ def list(request):
     return Response(serializer.data)
     
 
-# @api_view(['POST'])
-# @permission_classes((IsAdminUserOrReadOnly,))
-# def create(request):
-#     serializer = MovieSerializer(data=request.data)
-#     if serializer.is_valid():
-#         instance = serializer.save()
-#         return Response({'id': instance.id}, status=status.HTTP_201_CREATED)
-#     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+@api_view(['POST'])
+@permission_classes((IsAdminUserOrReadOnly,))
+def create(request):
+    serializer = MovieSerializer(data=request.data)
+    if serializer.is_valid():
+        instance = serializer.save()
+        return Response({'id': instance.id}, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-# @api_view(['PUT'])
-# @permission_classes((IsAdminUserOrReadOnly,))
-# def change(request, pk):
-#     movie = get_object_or_404(Movie, pk=pk)
-#     serializer = MovieSerializer(request.data, instance=movie)
-#     if serializer.is_valid():
-#         serializer.save()
-#         serializer = MovieSerializer(Movie)
-#         return Response(serializer.data)
-#     else:
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-# @api_view(['DELETE'])
-# @permission_classes((IsAdminUserOrReadOnly,))
-# def delete(request, pk):
-#     try:
-#         movie = Movie.objects.get(pk=pk)
-#     except Movie.DoesNotExist:
-#         return Response(status=status.HTTP_404_NOT_FOUND)
 
-#     movie.delete()
-#     return Response("deleted successfully")
 
 @api_view(['GET'])
 @permission_classes((IsAuthenticated,))
